@@ -6,7 +6,7 @@
 #*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/06 21:39:23 by pbourlet          #+#    #+#             *#
-#*   Updated: 2017/05/03 18:56:44 by pbourlet         ###   ########.fr       *#
+#*   Updated: 2017/05/08 14:49:42 by pbourlet         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -19,12 +19,13 @@ TCAP =	-L. -ltermcap
 SLT	=	\
 		main.c \
 		ft_select_disp.c \
-		ft_select_error.c \
 		ft_putin.c \
-		ft_selection.c \
 		ft_underling.c \
 		ft_move.c \
 		ft_del.c \
+		ft_selection.c \
+		ft_off.c \
+		ft_print_selection.c \
 
 OBJ	=	$(SLT:.c=.o)
 

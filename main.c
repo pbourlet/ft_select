@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:21:12 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/03 18:46:57 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/08 14:47:35 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_select_init(struct termios *save_term)
 {
 	extern char		**environ;
 	char			*name_term;
-	char			buff[512];
+	char			buff[2048];
 	struct termios	term;
 
 	if ((name_term = getenv("TERM")) == NULL ||
@@ -44,7 +44,5 @@ int		main(int ac, char **av)
 		tputs(tgetstr("ve", NULL), 1, &ft_putin);
 		tcsetattr(0, TCSANOW, &save_term);
 	}
-	else
-		ft_select_error("select", NULL, E_2FWARG);
 	return (0);
 }

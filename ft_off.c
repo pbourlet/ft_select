@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select_error.c                                  :+:      :+:    :+:   */
+/*   ft_off.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/03 12:23:34 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/03 12:24:44 by pbourlet         ###   ########.fr       */
+/*   Created: 2017/05/08 11:46:18 by pbourlet          #+#    #+#             */
+/*   Updated: 2017/05/08 13:13:27 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/select.h"
 
-int		ft_select_error(char *prg, char *name, char *erno)
+void	ft_off(void)
 {
-	ft_printf("%s: ", prg);
-	!name? 0 : ft_printf("%s: ", name);
-	ft_printf("%s\n", erno);
-	return (1);
+	tputs(tgetstr("me", NULL), 1, &ft_putin);
 }
