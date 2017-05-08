@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:27:20 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/08 15:00:03 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/08 16:48:09 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 # include <term.h>
 # include <termios.h>
 
-void	ft_select_disp(int ac, char **av);
+void	ft_select_disp(int ac, char **av, int len);
 void	ft_underling(void);
 void	ft_off(void);
 void	ft_selection(char *buff, int *slt, int *i);
 void	ft_print_selection(char **av, int *slt);
+void	ft_putlenstr_fd(int len, char *content, int fd);
 
 char	*ft_del(char *buff, int *i);
 

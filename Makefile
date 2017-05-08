@@ -6,7 +6,7 @@
 #*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/06 21:39:23 by pbourlet          #+#    #+#             *#
-#*   Updated: 2017/05/08 14:49:42 by pbourlet         ###   ########.fr       *#
+#*   Updated: 2017/05/08 16:48:24 by pbourlet         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -26,6 +26,7 @@ SLT	=	\
 		ft_selection.c \
 		ft_off.c \
 		ft_print_selection.c \
+		ft_putlenstr_fd.c \
 
 OBJ	=	$(SLT:.c=.o)
 

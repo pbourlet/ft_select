@@ -6,18 +6,18 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:25:49 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/08 15:16:09 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/08 17:22:05 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/select.h"
 
-void	ft_print(int *i, char **av)
+void	ft_print(int *i, char **av, int len)
 {
 	i[0] == i[1] ? ft_underling() : 0;
-	ft_putstr_fd(av[i[0]], 2);
+	ft_putstr_fd(av[i[0]], 0);
 	ft_off();
-	av[i[0]] != NULL ? ft_putchar_fd(' ', 2) : 0;
+	av[i[0]] != NULL ? ft_putlenstr_fd(len - ft_strlen(av[i[0]]), " ", 0) : 0;
 	i[0] += 1;
 }
 
@@ -27,7 +27,6 @@ void	ft_modif(char *buff, int *i, int *slt, char **av)
 		ft_selection(buff, slt, i);
 	if (buff[0] == 27 && (buff[2] == 68 || buff[2] == 67))
 		i[1] = ft_move(buff, av, i[3], i[1]);
-	ft_print(i, av);
 }
 
 void	ft_to_zero(char *buff, int *slt, int *i, int ac)
@@ -39,14 +38,14 @@ void	ft_to_zero(char *buff, int *slt, int *i, int ac)
 	i[3] = ac - 1;
 }
 
-void	ft_select_disp(int ac, char **av)
+void	ft_select_disp(int ac, char **av, int len)
 {
 	char	buff[4];
 	int		i[4];
 	int		slt[2048];
 
 	ft_to_zero(buff, slt, i, ac);
-	tputs(tgetstr("vi", NULL), 1, &ft_putin);
+//	tputs(tgetstr("vi", NULL), 1, &ft_putin);
 	while (!((buff[0] == 27 && buff[2] == 0) || buff[0] == 10) && i[1] != -1)
 	{
 		while (i[2]--)
@@ -58,8 +57,10 @@ void	ft_select_disp(int ac, char **av)
 				buff[2] == 51 && buff[3] == 126))
 					av[i[1]] = ft_del(buff, &i[0]);
 				ft_modif(buff, i, slt, av);
+				ft_print(i, av, len);
 			}
-			ft_putchar_fd('\r', 2);
+			tputs(tgetstr("up", NULL), 0, &ft_putin); //compter le nb de lignes avec winsize
+			tputs(tgetstr("cr", NULL), 0, &ft_putin);
 		}
 		i[2] = 2;
 		i[1] != -1 ? read(0, buff, 4) : 0;

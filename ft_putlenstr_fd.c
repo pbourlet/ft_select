@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putlenstr_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/06 21:22:08 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/08 16:33:04 by pbourlet         ###   ########.fr       */
+/*   Created: 2017/05/08 16:49:18 by pbourlet          #+#    #+#             */
+/*   Updated: 2017/05/08 16:50:17 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/select.h"
 
-void	ft_putstr_fd(char const *str, int fd)
+void	ft_putlenstr_fd(int len, char *content, int fd)
 {
 	int i;
 
-	i = 0;
-	if (!str || fd < 0)
-		return ;
-	while (str[i] != '\0')
-	{
-		ft_putchar_fd(str[i], fd);
-		i++;
-	}
+	i = content ? ft_strlen(content) : 0;
+	ft_putstr_fd(content, fd);
+	while (i++ <= len)
+		ft_putchar_fd(' ', fd);
 }
