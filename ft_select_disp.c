@@ -6,20 +6,11 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:25:49 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/08 17:22:05 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/11 16:09:36 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/select.h"
-
-void	ft_print(int *i, char **av, int len)
-{
-	i[0] == i[1] ? ft_underling() : 0;
-	ft_putstr_fd(av[i[0]], 0);
-	ft_off();
-	av[i[0]] != NULL ? ft_putlenstr_fd(len - ft_strlen(av[i[0]]), " ", 0) : 0;
-	i[0] += 1;
-}
 
 void	ft_modif(char *buff, int *i, int *slt, char **av)
 {
@@ -29,23 +20,36 @@ void	ft_modif(char *buff, int *i, int *slt, char **av)
 		i[1] = ft_move(buff, av, i[3], i[1]);
 }
 
-void	ft_to_zero(char *buff, int *slt, int *i, int ac)
+int		ft_to_zero(char *buff, int *slt, int *i, int ac)
 {
 	ft_memset(buff, 0, 4);
 	ft_memset(slt, 0, 2048);
 	i[1] = 1;
 	i[2] = 2;
 	i[3] = ac - 1;
+	i[5] = 0;
+	return (ft_winsize());
+}
+
+void	ft_return(int *i)
+{
+	while (i[5])
+	{
+		tputs(tgetstr("up", NULL), 0, &ft_putin);
+		tputs(tgetstr("cr", NULL), 0, &ft_putin);
+		i[5] -= 1;
+	}
+	i[4] = ft_winsize();
 }
 
 void	ft_select_disp(int ac, char **av, int len)
 {
 	char	buff[4];
-	int		i[4];
+	int		i[6];
 	int		slt[2048];
 
-	ft_to_zero(buff, slt, i, ac);
-//	tputs(tgetstr("vi", NULL), 1, &ft_putin);
+	i[4] = ft_to_zero(buff, slt, i, ac);
+	tputs(tgetstr("vi", NULL), 1, &ft_putin);
 	while (!((buff[0] == 27 && buff[2] == 0) || buff[0] == 10) && i[1] != -1)
 	{
 		while (i[2]--)
@@ -59,8 +63,7 @@ void	ft_select_disp(int ac, char **av, int len)
 				ft_modif(buff, i, slt, av);
 				ft_print(i, av, len);
 			}
-			tputs(tgetstr("up", NULL), 0, &ft_putin); //compter le nb de lignes avec winsize
-			tputs(tgetstr("cr", NULL), 0, &ft_putin);
+			ft_return(i);
 		}
 		i[2] = 2;
 		i[1] != -1 ? read(0, buff, 4) : 0;

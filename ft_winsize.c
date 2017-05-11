@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_selection.c                               :+:      :+:    :+:   */
+/*   ft_winsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/08 14:38:30 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/11 16:09:28 by pbourlet         ###   ########.fr       */
+/*   Created: 2017/05/11 16:02:46 by pbourlet          #+#    #+#             */
+/*   Updated: 2017/05/11 16:03:13 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/select.h"
 
-void	ft_print_selection(char **av, int *slt)
+int		ft_winsize(void)
 {
-	int i;
+	struct winsize	w;
 
-	i = 0;
-	tputs(tgetstr("cd", NULL), 0, &ft_putin);
-	while (av[++i])
-	{
-		slt[i] == 1 ? ft_putstr(av[i]) : 0;
-		slt[i] == 1 ? ft_putchar(' ') : 0;
-	}
+	ioctl(0, TIOCGWINSZ, &w);
+	return (w.ws_col);
 }
