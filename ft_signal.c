@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_selection.c                                     :+:      :+:    :+:   */
+/*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/08 11:31:16 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/11 19:29:45 by pbourlet         ###   ########.fr       */
+/*   Created: 2017/05/11 17:29:31 by pbourlet          #+#    #+#             */
+/*   Updated: 2017/05/11 20:11:17 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/select.h"
 
-void	ft_selection(t_slt *t, char **av)
+void	ft_signal(int sig)
 {
-	if (t->i == t->cur && t->bf[0] == 32)
-	{
-		t->slt[t->i] = !t->slt[t->i];
-		ft_memset(t->bf, 0, 4);
-		t->bf[0] = 27;
-		t->bf[2] = 67;
-		if (av[t->i + 1] == NULL)
-		{
-			t->i = 1;
-			ft_return(t);
-		}
-	}
-	t->slt[t->i] == 1 ? tputs(tgetstr("mr", NULL), 0, &ft_putin) : 0;
+	g_signo = sig;
+	tputs(tgetstr("cd", NULL), 0, ft_putin);
 }

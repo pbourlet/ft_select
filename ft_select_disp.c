@@ -6,67 +6,48 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:25:49 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/11 16:09:36 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/11 20:13:41 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/select.h"
 
-void	ft_modif(char *buff, int *i, int *slt, char **av)
+static void	ft_to_zero(t_slt *t, int ac)
 {
-	if ((i[0] == i[1] && buff[0] == 32) || slt[i[0]] == 1)
-		ft_selection(buff, slt, i);
-	if (buff[0] == 27 && (buff[2] == 68 || buff[2] == 67))
-		i[1] = ft_move(buff, av, i[3], i[1]);
+	ft_memset(t->bf, 0, 4);
+	ft_memset(t->slt, 0, 2048);
+	t->i = 1;
+	t->cur = 1;
+	t->sac = ac - 1;
+	g_signo = 0;
+	tputs(tgetstr("vi", NULL), 1, &ft_putin);
 }
 
-int		ft_to_zero(char *buff, int *slt, int *i, int ac)
+void		ft_return(t_slt *t)
 {
-	ft_memset(buff, 0, 4);
-	ft_memset(slt, 0, 2048);
-	i[1] = 1;
-	i[2] = 2;
-	i[3] = ac - 1;
-	i[5] = 0;
-	return (ft_winsize());
-}
-
-void	ft_return(int *i)
-{
-	while (i[5])
+	while (t->l)
 	{
 		tputs(tgetstr("up", NULL), 0, &ft_putin);
-		tputs(tgetstr("cr", NULL), 0, &ft_putin);
-		i[5] -= 1;
+		t->l--;
 	}
-	i[4] = ft_winsize();
+	tputs(tgetstr("cr", NULL), 0, &ft_putin);
+	t->size = ft_winsize();
 }
 
-void	ft_select_disp(int ac, char **av, int len)
+void		ft_select_disp(int ac, char **av, int len)
 {
-	char	buff[4];
-	int		i[6];
-	int		slt[2048];
+	t_slt	t;
 
-	i[4] = ft_to_zero(buff, slt, i, ac);
-	tputs(tgetstr("vi", NULL), 1, &ft_putin);
-	while (!((buff[0] == 27 && buff[2] == 0) || buff[0] == 10) && i[1] != -1)
+	ft_to_zero(&t, ac);
+	while (!((t.bf[0] == 27 && t.bf[2] == 0) || t.bf[0] == 10) && t.cur != -1)
 	{
-		while (i[2]--)
-		{
-			i[0] = 1;
-			while (i[0] <= ac && i[1] != -1)
-			{
-				if (buff[0] == 127 || (buff[0] == 27 && buff[1] == 91 &&
-				buff[2] == 51 && buff[3] == 126))
-					av[i[1]] = ft_del(buff, &i[0]);
-				ft_modif(buff, i, slt, av);
-				ft_print(i, av, len);
-			}
-			ft_return(i);
-		}
-		i[2] = 2;
-		i[1] != -1 ? read(0, buff, 4) : 0;
+		if (t.bf[0] == 127 || (t.bf[0] == 27 && t.bf[1] == 91 &&
+		t.bf[2] == 51 && t.bf[3] == 126))
+			av[t.cur] = ft_del(&t);
+		ft_print(&t, av, len);
+		if (!g_signo)
+			t.cur != -1 ? read(0, t.bf, 4) : 0;
+		g_signo = 0;
 	}
-	buff[0] != 27 ? ft_print_selection(av, slt) : 0;
+	t.bf[0] != 27 ? ft_print_selection(av, t, len) : 0;
 }

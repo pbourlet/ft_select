@@ -6,7 +6,7 @@
 #*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/06 21:39:23 by pbourlet          #+#    #+#             *#
-#*   Updated: 2017/05/11 16:03:45 by pbourlet         ###   ########.fr       *#
+#*   Updated: 2017/05/11 17:32:08 by pbourlet         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -29,6 +29,7 @@ SLT	=	\
 		ft_putlenstr_fd.c \
 		ft_print.c \
 		ft_winsize.c \
+		ft_signal.c \
 
 OBJ	=	$(SLT:.c=.o)
 

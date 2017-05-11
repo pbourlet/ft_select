@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:21:12 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/08 16:50:55 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/11 20:06:31 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,11 @@ int		main(int ac, char **av)
 	struct termios	save_term;
 	int				len;
 
-	if (ac >= 2)
+	if (ac > 512)
+		ft_putstr_fd("too much choices\n", 2);
+	else if (ac >= 2)
 	{
+		signal(SIGWINCH, ft_signal);
 		len = ft_maxlen(av);
 		if (!ft_select_init(&save_term))
 			return (0);

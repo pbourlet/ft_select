@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:27:20 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/11 16:03:24 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/11 20:19:53 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,36 @@
 # include <term.h>
 # include <termios.h>
 # include <sys/ioctl.h>
+# include <signal.h>
 
-void	ft_select_disp(int ac, char **av, int len);
-void	ft_underling(void);
-void	ft_off(void);
-void	ft_selection(char *buff, int *slt, int *i);
-void	ft_print_selection(char **av, int *slt);
-void	ft_putlenstr_fd(int len, char *content, int fd);
-void	ft_print(int*i, char **av, int len);
+typedef struct	s_slt
+{
+	char		bf[4];
+	int			slt[512];
+	int			i;
+	int			cur;
+	int			l;
+	int			sac;
+	int			size;
+}				t_slt;
 
-char	*ft_del(char *buff, int *i);
+int				g_signo;
 
-int		ft_select_error(char *prg, char *name, char *erno);
-int		ft_putin(int c);
-int		ft_move(char *buf, char **av, int ac, int cur);
-int		*ft_intset(int *inttab, char c, int len);
-int		ft_winsize(void);
+void			ft_select_disp(int ac, char **av, int len);
+void			ft_underling(void);
+void			ft_off(void);
+void			ft_selection(t_slt *t, char **av);
+void			ft_print_selection(char **av, t_slt t, int len);
+void			ft_putlenstr_fd(int len, char *content, int fd);
+void			ft_print(t_slt *t, char **av, int len);
+void			ft_signal(int sig);
+
+void			ft_return(t_slt *t);
+
+char			*ft_del(t_slt *t);
+
+int				ft_putin(int c);
+int				ft_move(t_slt *t, char **av);
+int				ft_winsize(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 18:49:48 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/03 19:18:24 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/11 19:32:05 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,31 @@ static int		ft_test(int ac, char **av)
 	return (0);
 }
 
-int				ft_move(char *buf, char **av, int ac, int cur)
+int				ft_move(t_slt *t, char **av)
 {
 	int add;
 
-	add = (buf[2] == 68 ? -1 : 1);
-	if (ft_test(ac, av))
+	add = (t->bf[2] == 68 ? -1 : 1);
+	if (ft_test(t->sac, av))
 	{
-		if (add == 1 ? (cur + add > ac) : (cur + add <= 0))
+		if (add == 1 ? (t->cur + add > t->sac) : (t->cur + add <= 0))
 		{
-			cur = add == 1 ? 1 : ac;
-			while (!av[cur])
-				cur = cur + add;
+			t->cur = add == 1 ? 1 : t->sac;
+			while (!av[t->cur])
+				t->cur = t->cur + add;
 		}
 		else
 		{
-			cur = cur + add;
-			while (!av[cur])
+			t->cur = t->cur + add;
+			while (!av[t->cur])
 			{
-				if (add == 1 ? (cur + add > ac) : (cur + add <= 0))
-					cur = add == 1 ? 1 : ac;
+				if (add == 1 ? (t->cur + add > t->sac) : (t->cur + add <= 0))
+					t->cur = add == 1 ? 1 : t->sac;
 				else
-					cur = cur + add;
+					t->cur = t->cur + add;
 			}
 		}
 	}
-	ft_memset(buf, 0, 4);
-	return (ft_test(ac, av) ? cur : -1);
+	ft_memset(t->bf, 0, 4);
+	return (ft_test(t->sac, av) ? t->cur : -1);
 }
