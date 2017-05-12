@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/08 14:38:30 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/11 20:19:28 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/12 14:53:35 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_print_selection(char **av, t_slt t, int len)
 	i = 0;
 	b = 0;
 	t.size = ft_winsize();
-	tputs(tgetstr("cd", NULL), 0, &ft_putin);
+	tputs(tgetstr("te", NULL), 0, &ft_putin);
 	while (av[++i])
 	{
 		if (t.slt[i])

@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 17:29:31 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/11 20:11:17 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/12 14:47:02 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_signal(int sig)
 {
-	g_signo = sig;
-	tputs(tgetstr("cd", NULL), 0, ft_putin);
+	(void)sig;
+	tputs(tgetstr("cl", NULL), 0, ft_putin);
+	ft_print(&g_t, g_t.sav, g_t.wlen);
 }
