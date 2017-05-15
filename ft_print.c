@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:00:29 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/12 15:01:20 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/15 15:44:17 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		ft_print(t_slt *t, char **av, int len)
 		if (av[t->i] && !t->b)
 		{
 			t->slt[t->i] == 1 ? tputs(tgetstr("mr", NULL), 0, &ft_putin) : 0;
-			t->i == t->cur ? ft_underling() : 0;
+			t->i == t->cur ? tputs(tgetstr("us", NULL), 0, ft_putin) : 0;
 			if (len + 1 > t->size)
 			{
 				ft_putstr_fd("\n\r", 0);

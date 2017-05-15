@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:27:20 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/12 15:01:08 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/15 15:44:28 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct	s_slt
 t_slt			g_t;
 
 void			ft_select_disp(int ac, char **av, int len);
-void			ft_underling(void);
 void			ft_selection(t_slt *t, char **av);
 void			ft_print_selection(char **av, t_slt t, int len);
 void			ft_putlenstr_fd(int len, char *content, int fd);
