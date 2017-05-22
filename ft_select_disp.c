@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:25:49 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/12 15:07:37 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/22 18:52:23 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void		ft_select_disp(int ac, char **av, int len)
 		g_t.cur != -1 ? read(0, g_t.bf, 4) : 0;
 		tputs(tgetstr("cd", NULL), 0, ft_putin);
 	}
-	g_t.bf[0] != 27 ? ft_print_selection(av, g_t, len) :
+	g_t.bf[0] != 27 ? ft_print_selection(av, g_t) :
 						tputs(tgetstr("te", NULL), 0, &ft_putin);
 }
