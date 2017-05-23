@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 17:29:31 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/23 16:55:26 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/23 17:47:33 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_restor(int sig)
 {
 	(void)sig;
 	ft_select_init(&(g_t.save_term));
+	signal(SIGTSTP, &ft_sigsusp);
 	ft_putstr_fd(tgetstr("ti", NULL), 0);
 	ft_putstr_fd(tgetstr("cl", NULL), 0);
 	ft_putstr_fd(tgetstr("vi", NULL), 0);
