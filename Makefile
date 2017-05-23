@@ -6,7 +6,7 @@
 #*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/06 21:39:23 by pbourlet          #+#    #+#             *#
-#*   Updated: 2017/05/23 15:45:08 by pbourlet         ###   ########.fr       *#
+#*   Updated: 2017/05/23 16:44:58 by pbourlet         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -34,7 +34,7 @@ OBJ	=	$(SLT:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c
+%.o: %.c includes/select.h
 	@gcc -c -Wall -Wextra -Werror -o $@ -c $< -I./includes 
 	@echo "\033[34;01m\xE2\x97\x89 \c"
 	@echo "\033[37;01m$<\c"
@@ -58,7 +58,7 @@ clean:
 fclean: clean
 	@rm -rf libft/libft.a
 	@echo "\033[31m===== \c"
-	@echo "\033[0m\033[32;01mMSH CLEAN\c"
+	@echo "\033[0m\033[32;01mEXE CLEAN\c"
 	@echo "\033[0m\033[31m =====\033[0m"
 	@rm -rf $(NAME)
 

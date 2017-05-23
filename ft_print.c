@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:00:29 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/23 15:45:24 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/23 17:07:23 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_modif(t_slt *t, char **av)
 	b = ft_test_size(t);
 	if (!b && ((t->i == t->cur && t->bf[0] == 32) || t->slt[t->i] == 1))
 		ft_selection(t, av);
-	if (!b && (t->bf[0] == 27 && (t->bf[2] == 68 || t->bf[2] == 67)))
+	if ((t->bf[0] == 27 && (t->bf[2] == 68 || t->bf[2] == 67)))
 		t->cur = ft_move(t, av);
 	return (b);
 }
@@ -53,7 +53,7 @@ void		ft_print(t_slt *t, char **av, int len)
 	while (t->i <= t->sac)
 	{
 		t->b = ft_modif(t, av);
-		ft_color();
+		!t->b ? ft_color() : 0;
 		if (av[t->i] && !t->b)
 		{
 			if (len + 1 > t->size)
