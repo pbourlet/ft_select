@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:00:29 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/22 18:52:22 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/23 15:27:48 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void		ft_print(t_slt *t, char **av, int len)
 		t->b = ft_modif(t, av);
 		if (av[t->i] && !t->b)
 		{
-			t->slt[t->i] == 1 ? tputs(tgetstr("mr", NULL), 0, &ft_putin) : 0;
-			t->i == t->cur ? tputs(tgetstr("us", NULL), 0, ft_putin) : 0;
+			t->slt[t->i] == 1 ? ft_putstr_fd(tgetstr("mr", NULL), 0) : 0;
+			t->i == t->cur ? ft_putstr_fd(tgetstr("us", NULL), 0) : 0;
 			if (len + 1 > t->size)
 			{
 				ft_putstr_fd("\n\r", 0);
@@ -58,7 +58,7 @@ void		ft_print(t_slt *t, char **av, int len)
 				t->l += 1;
 			}
 			ft_putstr_fd(av[t->i], 0);
-			tputs(tgetstr("me", NULL), 0, &ft_putin);
+			ft_putstr_fd(tgetstr("me", NULL), 0);
 			ft_putlenstr_fd(len - ft_strlen(av[t->i]), " ", 0);
 			t->size -= (len + 1);
 		}

@@ -6,13 +6,13 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:21:12 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/22 16:04:01 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/23 15:18:54 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/select.h"
 
-static int	ft_select_init(struct termios *save_term)
+int			ft_select_init(struct termios *save_term)
 {
 	extern char		**environ;
 	char			*name_term;
@@ -44,24 +44,31 @@ static int	ft_maxlen(char **av)
 	return (res);
 }
 
+static void ft_sigtest(void)
+{
+	signal(SIGWINCH, ft_signal);
+	signal(SIGINT, ft_sigstop);
+	signal(SIGTSTP, ft_sigsusp);
+	signal(SIGCONT, ft_restor);
+}
+
 int			main(int ac, char **av)
 {
-	struct termios	save_term;
 	int				len;
 
 	if (ac > 512)
 		ft_putstr_fd("too much choices\n", 2);
 	else if (ac >= 2)
 	{
-		signal(SIGWINCH, ft_signal);
+		ft_sigtest();
 		len = ft_maxlen(av);
-		if (!ft_select_init(&save_term))
+		if (!ft_select_init(&(g_t.save_term)))
 			return (0);
-		tputs(tgetstr("ti", NULL), 0, &ft_putin);
-		tputs(tgetstr("cl", NULL), 0, &ft_putin);
+		ft_putstr_fd(tgetstr("ti", NULL), 0);
+		ft_putstr_fd(tgetstr("cl", NULL), 0);
 		ft_select_disp(ac, av, len);
-		tputs(tgetstr("ve", NULL), 0, &ft_putin);
-		tcsetattr(0, TCSANOW, &save_term);
+		ft_putstr_fd(tgetstr("ve", NULL), 0);
+		tcsetattr(0, TCSANOW, &(g_t.save_term));
 	}
 	return (0);
 }

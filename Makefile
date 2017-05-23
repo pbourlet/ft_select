@@ -6,7 +6,7 @@
 #*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/06 21:39:23 by pbourlet          #+#    #+#             *#
-#*   Updated: 2017/05/15 15:44:33 by pbourlet         ###   ########.fr       *#
+#*   Updated: 2017/05/23 15:21:28 by pbourlet         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -19,7 +19,6 @@ TCAP =	-L. -ltermcap
 SLT	=	\
 		main.c \
 		ft_select_disp.c \
-		ft_putin.c \
 		ft_move.c \
 		ft_del.c \
 		ft_selection.c \

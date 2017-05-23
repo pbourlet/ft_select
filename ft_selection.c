@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/08 11:31:16 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/11 19:29:45 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/23 15:22:08 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	ft_selection(t_slt *t, char **av)
 			ft_return(t);
 		}
 	}
-	t->slt[t->i] == 1 ? tputs(tgetstr("mr", NULL), 0, &ft_putin) : 0;
+	t->slt[t->i] == 1 ? ft_putstr_fd(tgetstr("mr", NULL), 0) : 0;
 }

@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:25:49 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/22 18:52:23 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/23 15:18:22 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_to_zero(t_slt *t, int ac, int len, char **av)
 	t->sac = ac - 1;
 	t->wlen = len;
 	t->sav = av;
-	tputs(tgetstr("vi", NULL), 1, &ft_putin);
+	ft_putstr_fd(tgetstr("vi", NULL), 0);
 }
 
 void		ft_select_disp(int ac, char **av, int len)
@@ -35,8 +35,8 @@ void		ft_select_disp(int ac, char **av, int len)
 			av[g_t.cur] = ft_del(&g_t);
 		ft_print(&g_t, av, len);
 		g_t.cur != -1 ? read(0, g_t.bf, 4) : 0;
-		tputs(tgetstr("cd", NULL), 0, ft_putin);
+		ft_putstr_fd(tgetstr("cd", NULL), 0);
 	}
 	g_t.bf[0] != 27 ? ft_print_selection(av, g_t) :
-						tputs(tgetstr("te", NULL), 0, &ft_putin);
+						ft_putstr_fd(tgetstr("te", NULL), 0);
 }

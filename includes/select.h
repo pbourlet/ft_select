@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:27:20 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/22 18:15:29 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/23 15:21:23 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,35 +20,38 @@
 # include <sys/ioctl.h>
 # include <signal.h>
 
-typedef struct	s_slt
+typedef struct		s_slt
 {
-	char		bf[4];
-	int			slt[512];
-	int			i;
-	int			cur;
-	int			l;
-	int			sac;
-	char		**sav;
-	int			size;
-	int			wlen;
-	int			b;
-}				t_slt;
+	char			bf[4];
+	int				slt[512];
+	int				i;
+	int				cur;
+	int				l;
+	int				sac;
+	char			**sav;
+	int				size;
+	int				wlen;
+	int				b;
+	struct termios	save_term;
+}					t_slt;
 
-t_slt			g_t;
+t_slt				g_t;
 
-void			ft_select_disp(int ac, char **av, int len);
-void			ft_selection(t_slt *t, char **av);
-void			ft_print_selection(char **av, t_slt t);
-void			ft_putlenstr_fd(int len, char *content, int fd);
-void			ft_print(t_slt *t, char **av, int len);
-void			ft_signal(int sig);
+void				ft_select_disp(int ac, char **av, int len);
+void				ft_selection(t_slt *t, char **av);
+void				ft_print_selection(char **av, t_slt t);
+void				ft_putlenstr_fd(int len, char *content, int fd);
+void				ft_print(t_slt *t, char **av, int len);
+void				ft_signal(int sig);
+void				ft_sigstop(int sig);
+void				ft_sigsusp(int sig);
+void				ft_restor(int sig);
+void				ft_return(t_slt *t);
 
-void			ft_return(t_slt *t);
+char				*ft_del(t_slt *t);
 
-char			*ft_del(t_slt *t);
-
-int				ft_putin(int c);
-int				ft_move(t_slt *t, char **av);
-int				ft_winsize(void);
+int					ft_move(t_slt *t, char **av);
+int					ft_winsize(void);
+int					ft_select_init(struct termios *save_term);
 
 #endif
