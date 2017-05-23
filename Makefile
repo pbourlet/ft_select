@@ -6,7 +6,7 @@
 #*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/06 21:39:23 by pbourlet          #+#    #+#             *#
-#*   Updated: 2017/05/23 15:21:28 by pbourlet         ###   ########.fr       *#
+#*   Updated: 2017/05/23 15:45:08 by pbourlet         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -28,6 +28,7 @@ SLT	=	\
 		ft_winsize.c \
 		ft_signal.c \
 		ft_return.c \
+		ft_color.c \
 
 OBJ	=	$(SLT:.c=.o)
 

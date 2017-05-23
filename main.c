@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:21:12 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/23 15:18:54 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/23 15:46:09 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	ft_maxlen(char **av)
 	return (res);
 }
 
-static void ft_sigtest(void)
+static void	ft_sigtest(void)
 {
 	signal(SIGWINCH, ft_signal);
 	signal(SIGINT, ft_sigstop);
@@ -63,7 +63,10 @@ int			main(int ac, char **av)
 		ft_sigtest();
 		len = ft_maxlen(av);
 		if (!ft_select_init(&(g_t.save_term)))
+		{
+			ft_putstr_fd("Termios not set...\n", 2);
 			return (0);
+		}
 		ft_putstr_fd(tgetstr("ti", NULL), 0);
 		ft_putstr_fd(tgetstr("cl", NULL), 0);
 		ft_select_disp(ac, av, len);

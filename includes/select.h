@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:27:20 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/23 15:21:23 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/23 15:44:59 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <termios.h>
 # include <sys/ioctl.h>
 # include <signal.h>
+# include <sys/stat.h>
 
 typedef struct		s_slt
 {
@@ -47,6 +48,7 @@ void				ft_sigstop(int sig);
 void				ft_sigsusp(int sig);
 void				ft_restor(int sig);
 void				ft_return(t_slt *t);
+void				ft_color(void);
 
 char				*ft_del(t_slt *t);
 
