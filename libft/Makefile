@@ -6,7 +6,7 @@
 #*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/06 21:39:23 by pbourlet          #+#    #+#             *#
-#*   Updated: 2017/03/28 16:18:55 by pbourlet         ###   ########.fr       *#
+#*   Updated: 2017/05/24 21:32:03 by pbourlet         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -111,7 +111,8 @@ OBJG =	$(GNL:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c
+%.o: %.c includes/libft.h includes/get_next_line.h includes/ft_printf.h \
+			ft_printf/ft_printf.h get_next_line/get_next_line.h
 	@gcc -c -Wall -Wextra -Werror -o $@ -c $< -I./includes
 
 $(NAME): $(OBJ) $(OBJF) $(OBJG)

@@ -6,7 +6,7 @@
 #*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/06 21:39:23 by pbourlet          #+#    #+#             *#
-#*   Updated: 2017/05/23 16:44:58 by pbourlet         ###   ########.fr       *#
+#*   Updated: 2017/05/24 21:35:01 by pbourlet         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -15,6 +15,15 @@ NAME =	ft_select
 LIB	=	-L. libft/libft.a
 
 TCAP =	-L. -ltermcap
+
+INC	=	$(addprefix libft/, \
+		includes/libft.h \
+		includes/get_next_line.h \
+		includes/ft_printf.h \
+		ft_printf/ft_printf.h \
+		get_next_line/get_next_line.h\
+		) \
+		includes/select.h \
 
 SLT	=	\
 		main.c \
@@ -34,7 +43,7 @@ OBJ	=	$(SLT:.c=.o)
 
 all: $(NAME)
 
-%.o: %.c includes/select.h
+%.o: %.c $(INC)
 	@gcc -c -Wall -Wextra -Werror -o $@ -c $< -I./includes 
 	@echo "\033[34;01m\xE2\x97\x89 \c"
 	@echo "\033[37;01m$<\c"
