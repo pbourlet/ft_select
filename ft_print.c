@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:00:29 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/24 19:48:47 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/24 21:44:59 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ static int	ft_test_size(t_slt *t)
 
 	ioctl(0, TIOCGWINSZ, &w);
 	n = (w.ws_col * w.ws_row) / ((t->wlen + 2) * t->sac);
-	if (w.ws_col < t->wlen + 1)
-		n = 0;
-	if (!n)
+	if (!n || w.ws_col < t->wlen + 1)
 	{
 		ft_putstr_fd("too small\r", 0);
 		return (1);
