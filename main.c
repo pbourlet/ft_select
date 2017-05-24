@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:21:12 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/23 17:47:36 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/24 18:40:20 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ static int	ft_maxlen(char **av)
 
 static void	ft_sigtest(void)
 {
-	signal(SIGWINCH, ft_signal);
+	signal(SIGWINCH, ft_sigsize);
 	signal(SIGINT, ft_sigstop);
+	signal(SIGQUIT, ft_sigstop);
 	signal(SIGTSTP, ft_sigsusp);
 	signal(SIGCONT, ft_restor);
 }

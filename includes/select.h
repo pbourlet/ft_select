@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:27:20 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/23 15:44:59 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/24 18:18:09 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void				ft_selection(t_slt *t, char **av);
 void				ft_print_selection(char **av, t_slt t);
 void				ft_putlenstr_fd(int len, char *content, int fd);
 void				ft_print(t_slt *t, char **av, int len);
-void				ft_signal(int sig);
+void				ft_sigsize(int sig);
 void				ft_sigstop(int sig);
 void				ft_sigsusp(int sig);
 void				ft_restor(int sig);

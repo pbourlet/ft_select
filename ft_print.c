@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:00:29 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/23 17:07:23 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/24 19:24:51 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	ft_test_size(t_slt *t)
 
 	ioctl(0, TIOCGWINSZ, &w);
 	n = (w.ws_col * w.ws_row) / ((t->wlen + 2) * t->sac);
+	if (w.ws_col < t->wlen + 1)
+		n = 0;
 	if (!n)
 	{
 		ft_putstr_fd("too small\r", 0);
@@ -50,7 +52,7 @@ void		ft_print(t_slt *t, char **av, int len)
 	t->i = 1;
 	t->size = ft_winsize();
 	t->l = 0;
-	while (t->i <= t->sac)
+	while (!t->b && t->i <= t->sac)
 	{
 		t->b = ft_modif(t, av);
 		!t->b ? ft_color() : 0;
@@ -69,5 +71,6 @@ void		ft_print(t_slt *t, char **av, int len)
 		}
 		t->i += 1;
 	}
+	t->b = 0;
 	ft_return(t);
 }

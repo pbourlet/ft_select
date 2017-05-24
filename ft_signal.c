@@ -6,13 +6,13 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 17:29:31 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/23 17:47:33 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/05/24 18:43:50 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/select.h"
 
-void	ft_signal(int sig)
+void	ft_sigsize(int sig)
 {
 	(void)sig;
 	ft_putstr_fd(tgetstr("cl", NULL), 0);
@@ -21,11 +21,14 @@ void	ft_signal(int sig)
 
 void	ft_sigstop(int sig)
 {
-	(void)sig;
+	pid_t	pid;
+
+	pid = getpid();
 	ft_putstr_fd(tgetstr("ve", NULL), 0);
 	ft_putstr_fd(tgetstr("te", NULL), 0);
 	tcsetattr(0, TCSANOW, &(g_t.save_term));
-	exit(0);
+	sig == SIGQUIT ? ft_printf("[1]    %d quit    %s\n", pid, g_t.sav[0]) : 0;
+	exit(1);
 }
 
 void	ft_sigsusp(int sig)
