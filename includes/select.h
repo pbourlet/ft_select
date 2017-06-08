@@ -6,14 +6,14 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:27:20 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/24 20:42:00 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/06/08 19:08:49 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SELECT_H
 # define SELECT_H
 
-# include "../libft/includes/libft.h"
+# include "../../libft/includes/libft.h"
 # include <termcap.h>
 # include <term.h>
 # include <termios.h>

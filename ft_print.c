@@ -6,11 +6,11 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:00:29 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/05/24 21:44:59 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/06/08 19:09:43 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "select.h"
+#include "includes/select.h"
 
 static int	ft_test_size(t_slt *t)
 {

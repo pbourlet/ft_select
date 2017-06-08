@@ -6,17 +6,17 @@
 #*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/06 21:39:23 by pbourlet          #+#    #+#             *#
-#*   Updated: 2017/05/24 21:35:01 by pbourlet         ###   ########.fr       *#
+#*   Updated: 2017/06/08 19:12:05 by pbourlet         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
 NAME =	ft_select
 
-LIB	=	-L. libft/libft.a
+LIB	=	-L. ~/libft/libft.a
 
 TCAP =	-L. -ltermcap
 
-INC	=	$(addprefix libft/, \
+INC	=	$(addprefix ~/libft/, \
 		includes/libft.h \
 		includes/get_next_line.h \
 		includes/ft_printf.h \
@@ -51,21 +51,21 @@ all: $(NAME)
 	@echo "\033[0m\c"
 
 $(NAME): $(OBJ)
-	@make -C libft/
+	@make -C ~/libft/
 	@gcc -o $(NAME) $(OBJ) $(LIB) $(TCAP)
 	@echo "\033[34;01m===== \c"
 	@echo "\033[32;01mEXE CREATED\c"
 	@echo "\033[0m\033[34;01m =====\033[0m"
 
 clean:
-	@make -C libft/ clean
+	@make -C ~/libft/ clean
 	@echo "\033[31m===== \c"
 	@echo "\033[0m\033[32;01mDIR CLEAN\c"
 	@echo "\033[0m\033[31m =====\033[0m"
 	@rm -rf $(OBJ)
 
 fclean: clean
-	@rm -rf libft/libft.a
+	@rm -rf ~/libft/libft.a
 	@echo "\033[31m===== \c"
 	@echo "\033[0m\033[32;01mEXE CLEAN\c"
 	@echo "\033[0m\033[31m =====\033[0m"
