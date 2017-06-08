@@ -6,7 +6,7 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:27:20 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/06/08 19:08:49 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/06/08 19:55:40 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void				ft_sigsusp(int sig);
 void				ft_restor(int sig);
 void				ft_return(t_slt *t);
 void				ft_color(void);
+void				ft_testsig(int sig);
 
 char				*ft_del(t_slt *t);
 
