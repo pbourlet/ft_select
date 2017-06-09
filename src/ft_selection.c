@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_selection.c                               :+:      :+:    :+:   */
+/*   ft_selection.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/08 14:38:30 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/06/07 17:13:01 by pbourlet         ###   ########.fr       */
+/*   Created: 2017/05/08 11:31:16 by pbourlet          #+#    #+#             */
+/*   Updated: 2017/06/09 14:03:09 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/select.h"
+#include "../includes/select.h"
 
-void	ft_print_selection(char **av, t_slt t)
+void	ft_selection(t_slt *t, char **av)
 {
-	int i;
-	int b;
-
-	i = 0;
-	b = 0;
-	ft_putstr_fd(tgetstr("te", NULL), 0);
-	while (++i < t.sac)
+	if (t->i == t->cur && t->bf[0] == 32)
 	{
-		t.slt[i] == 1 && b > 0 ? ft_putchar(' ') : 0;
-		t.slt[i] == 1 ? ft_printf("%s", av[i]) : 0;
-		t.slt[i] == 1 ? b++ : 0;
+		t->slt[t->i] = !t->slt[t->i];
+		ft_memset(t->bf, 0, 4);
+		t->bf[0] = 27;
+		t->bf[2] = 67;
+		if (av[t->i + 1] == NULL)
+		{
+			t->i = 1;
+			ft_return(t);
+		}
 	}
+	t->slt[t->i] == 1 ? ft_putstr_fd(tgetstr("mr", NULL), 0) : 0;
 }

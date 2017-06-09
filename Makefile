@@ -6,7 +6,7 @@
 #*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2016/11/06 21:39:23 by pbourlet          #+#    #+#             *#
-#*   Updated: 2017/06/08 19:12:05 by pbourlet         ###   ########.fr       *#
+#*   Updated: 2017/06/09 14:26:51 by pbourlet         ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -25,6 +25,10 @@ INC	=	$(addprefix ~/libft/, \
 		) \
 		includes/select.h \
 
+SRCDIR =	src
+
+OBJDIR =	obj
+
 SLT	=	\
 		main.c \
 		ft_select_disp.c \
@@ -39,36 +43,39 @@ SLT	=	\
 		ft_return.c \
 		ft_color.c \
 
-OBJ	=	$(SLT:.c=.o)
+OBJ	=	$(SLT:%.c=$(OBJDIR)/%.o)
 
 all: $(NAME)
 
-%.o: %.c $(INC)
-	@gcc -c -Wall -Wextra -Werror -o $@ -c $< -I./includes 
-	@echo "\033[34;01m\xE2\x97\x89 \c"
-	@echo "\033[37;01m$<\c"
-	@echo "\033[32;01m ✓"
-	@echo "\033[0m\c"
-
-$(NAME): $(OBJ)
+$(NAME): dir $(OBJ)
 	@make -C ~/libft/
 	@gcc -o $(NAME) $(OBJ) $(LIB) $(TCAP)
 	@echo "\033[34;01m===== \c"
 	@echo "\033[32;01mEXE CREATED\c"
-	@echo "\033[0m\033[34;01m =====\033[0m"
+	@echo "\033[0m\033[34;01m   =====\033[0m"
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(INC)
+	@gcc -c -Wall -Wextra -Werror -o $@ -c $< -I./includes 
+	@echo "\033[34;01m\xE2\x97\x89 \c"
+	@echo "\033[37;01m$(notdir $(basename $<))\c"
+	@echo "\033[32;01m ✓"
+	@echo "\033[0m\c"
+
+dir:
+	@mkdir -p $(OBJDIR)
 
 clean:
 	@make -C ~/libft/ clean
 	@echo "\033[31m===== \c"
 	@echo "\033[0m\033[32;01mDIR CLEAN\c"
-	@echo "\033[0m\033[31m =====\033[0m"
-	@rm -rf $(OBJ)
+	@echo "\033[0m\033[31m     =====\033[0m"
+	@rm -rf $(OBJDIR)
 
 fclean: clean
 	@rm -rf ~/libft/libft.a
 	@echo "\033[31m===== \c"
 	@echo "\033[0m\033[32;01mEXE CLEAN\c"
-	@echo "\033[0m\033[31m =====\033[0m"
+	@echo "\033[0m\033[31m     =====\033[0m"
 	@rm -rf $(NAME)
 
 re: fclean all

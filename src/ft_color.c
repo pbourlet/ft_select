@@ -6,11 +6,11 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 15:44:15 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/06/08 19:09:55 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/06/09 14:01:38 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/select.h"
+#include "../includes/select.h"
 
 static void	ft_color_set(struct stat statis)
 {
