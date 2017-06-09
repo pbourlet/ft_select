@@ -6,11 +6,11 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/08 11:31:16 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/06/09 14:03:09 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:54:53 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/select.h"
+#include "select.h"
 
 void	ft_selection(t_slt *t, char **av)
 {

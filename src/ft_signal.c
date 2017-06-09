@@ -6,11 +6,11 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 17:29:31 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/06/09 14:03:19 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:55:00 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/select.h"
+#include "select.h"
 
 void	ft_sigsize(int sig)
 {

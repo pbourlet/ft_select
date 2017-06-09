@@ -6,11 +6,11 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:02:46 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/06/09 14:03:27 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:55:08 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/select.h"
+#include "select.h"
 
 int		ft_winsize(void)
 {

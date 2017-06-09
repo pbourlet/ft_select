@@ -6,11 +6,11 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/08 16:49:18 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/06/09 14:02:43 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:54:29 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/select.h"
+#include "select.h"
 
 void	ft_putlenstr_fd(int len, char *content, int fd)
 {

@@ -6,11 +6,11 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 18:49:48 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/06/09 14:02:13 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:53:58 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/select.h"
+#include "select.h"
 
 static int		ft_test(int ac, char **av)
 {

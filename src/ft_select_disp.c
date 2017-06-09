@@ -6,11 +6,11 @@
 /*   By: pbourlet <pbourlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 12:25:49 by pbourlet          #+#    #+#             */
-/*   Updated: 2017/06/09 14:03:00 by pbourlet         ###   ########.fr       */
+/*   Updated: 2017/06/09 15:54:46 by pbourlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/select.h"
+#include "select.h"
 
 static void	ft_to_zero(t_slt *t, int ac, int len, char **av)
 {
